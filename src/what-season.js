@@ -22,7 +22,13 @@ const { NotImplementedError } = require('../extensions/index.js');
       return 'Invalid date!'
   }
     
-
+  if (date instanceof Date) {
+    try {
+      date.getUTCFullYear();
+    } catch {
+      throw new Error('Invalid date!');
+    }
+  }
    
   for (let item in date) {
       if (typeof(item) === 'string') {
